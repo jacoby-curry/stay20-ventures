@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stay20 Ventures — Creating the history of tomorrow</title>
+<meta name="description" content="Stay20 Ventures. Cinema. Capital. Culture. Creating the history of tomorrow.">
+<meta property="og:title" content="Stay20 Ventures">
+<meta property="og:description" content="Cinema. Capital. Culture. Creating the history of tomorrow.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0A0A0A;
+    --gray-1: #1A1A1A;
+    --gray-2: #2A2A2A;
+    --gray-3: #6B6B6B;
+    --gray-4: #9A9A9A;
+    --white: #F5F5F5;
+    --blue: #3B6FE0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 48px;
+    mix-blend-mode: difference;
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .nav-links a:hover { opacity: 0.5; }
+
+  .hero {
+    height: 100vh;
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 120px 48px 56px;
+    position: relative;
+  }
+
+  .hero-top {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+  }
+
+  .hero-statement {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 200;
+    font-size: clamp(56px, 8vw, 120px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 1.4s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-statement em {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--gray-4);
+  }
+
+  .hero-blue-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: var(--blue);
+    border-radius: 50%;
+    margin-left: 8px;
+    vertical-align: middle;
+    transform: translateY(-12px);
+    opacity: 0;
+    animation: fadeIn 1s 1.4s forwards;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 1.4s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-pillars-bottom {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-pillar-bottom {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+  }
+
+  .hero-pillar-bottom:hover { color: var(--blue); }
+
+  .pillars {
+    padding: 160px 48px 160px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .pillars-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 120px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--gray-2);
+  }
+
+  .pillars-label {
+    font-size: 12px;
+    color: var(--gray-3);
+    letter-spacing: 0.02em;
+    padding-top: 12px;
+  }
+
+  .pillars-headline {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 200;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--white);
+  }
+
+  .pillars-headline em {
+    font-style: italic;
+    color: var(--gray-4);
+  }
+
+  .pillar-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr;
+    gap: 48px;
+    padding: 64px 0;
+    border-bottom: 1px solid var(--gray-2);
+    align-items: start;
+    transition: background 0.4s;
+  }
+
+  .pillar-row:hover {
+    background: linear-gradient(to right, transparent, rgba(59, 111, 224, 0.025), transparent);
+  }
+
+  .pillar-row:last-child { border-bottom: none; }
+
+  .pillar-num {
+    font-size: 12px;
+    color: var(--gray-3);
+    letter-spacing: 0.02em;
+    padding-top: 22px;
+    transition: color 0.3s;
+  }
+
+  .pillar-row:hover .pillar-num { color: var(--blue); }
+
+  .pillar-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 300;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--white);
+  }
+
+  .pillar-desc {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    font-size: clamp(20px, 1.7vw, 26px);
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--gray-4);
+    padding-top: 28px;
+    max-width: 460px;
+  }
+
+  .manifesto {
+    padding: 160px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .manifesto-text {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 200;
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--white);
+  }
+
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--gray-4);
+  }
+
+  .manifesto-text .accent {
+    color: var(--blue);
+    font-style: italic;
+  }
+
+  .cta {
+    padding: 0 48px 200px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .cta-statement {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-weight: 200;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--white);
+  }
+
+  .cta-statement em {
+    font-style: italic;
+    color: var(--gray-4);
+  }
+
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 16px;
+  }
+
+  .cta-tagline {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    font-size: clamp(22px, 2vw, 28px);
+    color: var(--white);
+    line-height: 1.3;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0;
+    width: fit-content;
+    transition: gap 0.3s;
+    text-decoration: none;
+  }
+
+  .cta-button:hover { gap: 18px; }
+  .cta-button:hover .cta-arrow { color: var(--blue); }
+
+  .cta-arrow {
+    color: var(--gray-4);
+    transition: color 0.3s;
+    font-size: 14px;
+  }
+
+  footer {
+    border-top: 1px solid var(--gray-2);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: var(--gray-3);
+  }
+
+  .footer-right {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gray-3);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 24px 24px; }
+    .nav-links { gap: 24px; }
+    .hero { padding: 100px 24px 40px; }
+    .hero-pillars-bottom { gap: 32px; }
+    .pillars { padding: 100px 24px; }
+    .pillars-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; padding-bottom: 40px; }
+    .pillar-row { grid-template-columns: 1fr; gap: 16px; padding: 48px 0; }
+    .pillar-num { padding-top: 0; }
+    .pillar-desc { padding-top: 8px; }
+    .manifesto { padding: 100px 24px; }
+    .cta { grid-template-columns: 1fr; gap: 40px; padding: 0 24px 120px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Stay20 Ventures</a>
+  <ul class="nav-links">
+    <li><a href="#pillars">Index</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-top">
+    <h1 class="hero-statement">
+      Creating the<br>
+      history of <em>tomorrow</em><span class="hero-blue-dot"></span>
+    </h1>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-pillars-bottom">
+      <a class="hero-pillar-bottom" href="#pillars">Cinema</a>
+      <a class="hero-pillar-bottom" href="#pillars">Capital</a>
+      <a class="hero-pillar-bottom" href="#pillars">Culture</a>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" id="pillars">
+  <div class="pillars-intro">
+    <span class="pillars-label reveal">Index</span>
+    <h2 class="pillars-headline reveal">A studio built<br>on three <em>pillars.</em></h2>
+  </div>
+
+  <div class="pillar-row reveal">
+    <span class="pillar-num">01</span>
+    <h3 class="pillar-title">Cinema</h3>
+    <p class="pillar-desc">Art, engineered.</p>
+  </div>
+
+  <div class="pillar-row reveal">
+    <span class="pillar-num">02</span>
+    <h3 class="pillar-title">Capital</h3>
+    <p class="pillar-desc">Connecting with conviction.</p>
+  </div>
+
+  <div class="pillar-row reveal">
+    <span class="pillar-num">03</span>
+    <h3 class="pillar-title">Culture</h3>
+    <p class="pillar-desc">Creating it. Amplifying it.</p>
+  </div>
+</section>
+
+<section class="manifesto">
+  <p class="manifesto-text reveal">
+    The emotion is real.<br>
+    <em>The backend is</em> <span class="accent">engineered.</span>
+  </p>
+</section>
+
+<section class="cta" id="contact">
+  <h2 class="cta-statement reveal">Let's form<br><em>vision</em> into<br>reality.</h2>
+  <div class="cta-right reveal">
+    <p class="cta-tagline">For those who do more than <em>dream</em>.</p>
+    <a class="cta-button" href="mailto:jacoby@stay20ventures.com">
+      Get in touch
+      <span class="cta-arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">&copy; Stay20 Ventures, 2026</span>
+  <span class="footer-right">Cinema &middot; Capital &middot; Culture</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
